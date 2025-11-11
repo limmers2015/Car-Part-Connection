@@ -10,4 +10,4 @@ api
 *.exe
 
 # Env files
-.env
+#.env
