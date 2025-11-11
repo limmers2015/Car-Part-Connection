@@ -1,13 +1,8 @@
 # Car Part Connection — C Backend (Skeleton)
 
-This is Phase 0: a minimal, dependency-free C HTTP server that exposes `GET /api/health` and logs structured JSON.
+## Phase 1 quick test
 
-We’ll progressively add:
-- Redis (jobs & sessions), PostgreSQL (users/vehicles), proper router, vendor scrapers, etc.
-
-## Build
-
+Install deps (Debian/Ubuntu):
 ```bash
-mkdir -p build && cd build
-cmake ..
-cmake --build . -j
+sudo apt-get update
+sudo apt-get install -y build-essential cmake libjansson-dev libhiredis-dev libpq-dev libsodium-dev
