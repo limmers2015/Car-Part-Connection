@@ -1,6 +1,34 @@
 cmake_minimum_required(VERSION 3.15)
 project(car_part_connection C)
 
+# Add near the top, after project(...)
+find_package(PostgreSQL REQUIRED)
+
+# ...
+
+add_executable(api
+  src/main.c
+  src/http.c
+  src/json.c
+  src/db.c
+  src/sessions.c
+  src/auth.c
+  src/vehicles.c
+  src/util.c
+)
+
+# Replace the plain "pq" link with the variables from find_package:
+target_link_libraries(api
+  jansson
+  hiredis
+  sodium
+  ${PostgreSQL_LIBRARIES}
+)
+
+# Ensure headers are on the include path:
+target_include_directories(api PRIVATE ${PostgreSQL_INCLUDE_DIRS})
+
+
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
